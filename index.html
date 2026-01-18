@@ -3,47 +3,29 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>QR Switch</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #fff;
-    }
-    img {
-      width: 300px;   /* adjust as you like */
-      height: 300px;  /* adjust as you like */
-      object-fit: contain;
-    }
-  </style>
+  <title>Opening…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <script>
-    function startCycle() {
-      const img = document.getElementById("qr");
+    function openLinks() {
+      // 1. Try to open the deep link immediately
+      window.location.href = "eop://?opid=43603";
 
-      // Start on QR‑1
-      img.src = "QR-1.jpg";
-
-      // After 3 seconds → show QR‑2
+      // 2. After 3 seconds, redirect to fallback web URL
       setTimeout(function () {
-        img.src = "QR-2.jpg";
-      }, 6000);
-
-      // After 6 seconds total → return to QR‑1
-      setTimeout(function () {
-        img.src = "QR-1.jpg";
-      }, 9000);
+        window.location.href =
+          "https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F";
+      }, 3000);
     }
 
-    window.addEventListener("load", startCycle);
+    window.onload = openLinks;
   </script>
+
 </head>
 <body>
-  <!-- This was the missing piece: you need an <img> element, not plain text -->
-  <img id="qr" src="QR-1.jpg" alt="QR image" />
+  <p style="text-align:center;margin-top:40px;font-family:sans-serif;">
+    Opening app…<br>
+    <small>If nothing happens, you'll be redirected shortly.</small>
+  </p>
 </body>
 </html>
-``
