@@ -5,43 +5,45 @@
   <meta charset="UTF-8">
   <title>QR Switch</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <style>
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #fff;
       margin: 0;
+      background: #fff;
     }
     img {
-      width: 300px;
-      height: 300px;
+      width: 300px;   /* adjust as you like */
+      height: 300px;  /* adjust as you like */
       object-fit: contain;
     }
   </style>
-
   <script>
     function startCycle() {
       const img = document.getElementById("qr");
 
-      img.src = "QR-1.jpg";     // show first QR
+      // Start on QR‑1
+      img.src = "QR-1.jpg";
 
+      // After 3 seconds → show QR‑2
       setTimeout(function () {
-        img.src = "QR-2.jpg";   // switch after 3 seconds
+        img.src = "QR-2.jpg";
       }, 3000);
 
+      // After 6 seconds total → return to QR‑1
       setTimeout(function () {
-        img.src = "QR-1.jpg";   // return to first QR after 6 seconds total
+        img.src = "QR-1.jpg";
       }, 6000);
     }
 
-    window.onload = startCycle;
+    window.addEventListener("load", startCycle);
   </script>
 </head>
-
 <body>
-  QR-1.jpg
+  <!-- This was the missing piece: you need an <img> element, not plain text -->
+  <img id="qr" src="QR-1.jpg" alt="QR image" />
 </body>
 </html>
+``
