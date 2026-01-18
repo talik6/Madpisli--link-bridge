@@ -2,58 +2,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Redirecting…</title>
+  <meta charset="UTF-8">
+  <title>QR Switch</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .container { max-width: 680px; margin: 56px auto; padding: 0 16px; text-align: center; }
-    code { background: color-mix(in srgb, currentColor 8%, transparent); padding: 2px 6px; border-radius: 4px; }
-    .muted { color: #6b7280; font-size: 13px; }
-    @media (prefers-color-scheme: dark) { .muted { color: #9aa0a6; } }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+      margin: 0;
+    }
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: contain;
+    }
   </style>
+
   <script>
-    const DEEP_LINK_TEXT = "eop://?opid=43603";
-    const FALLBACK_URL =
-      "https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F";
-
-    // Optional heuristic: if the page loses visibility soon after load,
-    // we *assume* the user switched to an app and skip the fallback redirect.
-    // If you don't want this heuristic, delete the visibilitychange handler.
-    let appLikelyOpened = false;
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") appLikelyOpened = true;
-    });
-
-    function onLoad() {
-      // 1) Show the deep link as plain text (not clickable)
-      const el = document.getElementById("deeplink");
-      if (el) el.textContent = DEEP_LINK_TEXT;
-
-      // 2) After 1.5s, redirect to the website (unless app likely opened)
-      setTimeout(() => {
-        if (!appLikelyOpened) {
-          window.location.replace(FALLBACK_URL);
-        }
+    function swapQR() {
+      setTimeout(function() {
+        document.getElementById("qr").src = "QR-2.jpg";
       }, 1500);
     }
-
-    window.addEventListener("load", onLoad);
+    window.onload = swapQR;
   </script>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Redirecting…</h1>
-    <p>The deep-link for this action is: <code id="deeplink">eop://?opid=43603</code></p>
-    <p class="muted">
-      If nothing happens automatically, you’ll be redirected shortly.
-      You can also continue to&nbsp;
-      <a href="https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F">
-        the website now
-      </a>.
-    </p>
-  </div>
+  <img id="qr" src="QR-1.jpg" alt="QR">
 </body>
 </html>
-``
