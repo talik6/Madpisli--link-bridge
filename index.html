@@ -5,15 +5,37 @@
   <meta charset="UTF-8">
   <title>Opening…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 60px;
+    }
+    code {
+      background: #f2f2f2;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 16px;
+      display: inline-block;
+    }
+  </style>
+
   <script>
     function openLinks() {
-      // Try to open app via deep-link
-      window.location.href = "eop://?opid=43603";
+      const deeplink = "eop://?opid=43603";
+      const fallback =
+        "https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F";
+
+      // Show the text on screen
+      document.getElementById("deeplink-text").textContent = deeplink;
+
+      // Try deep link immediately
+      window.location.href = deeplink;
 
       // After 3 seconds → fallback
       setTimeout(function () {
-        window.location.href =
-          "https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F";
+        window.location.href = fallback;
       }, 3000);
     }
 
@@ -21,9 +43,17 @@
   </script>
 </head>
 <body>
-  <p style="text-align:center; margin-top:40px;">
-    Trying to open: <br><code>eop://?opid=43603</code><br><br>
-    If nothing happens, you’ll be redirected shortly.
+
+  <h2>Opening app…</h2>
+
+  <p>Trying to open the following deep link:</p>
+
+  <code id="deeplink-text"></code>
+
+  <p style="margin-top:20px; font-size:14px; color:#555;">
+    If nothing happens, you'll be redirected shortly.
   </p>
+
 </body>
 </html>
+``
