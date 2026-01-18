@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting…</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .container { text-align: center; margin-top: 48px; }
+    code { background: #f5f5f7; padding: 2px 6px; border-radius: 4px; }
+    .muted { color: #666; font-size: 12px; }
+  </style>
+  <script>
+    const DEEP_LINK_TEXT = "eop://?opid=43603";
+    const FALLBACK_URL = "https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F";
+
+    function onLoad() {
+      // 1) Show the deep link as plain text in the page
+      var el = document.getElementById("deeplink-text");
+      if (el) el.textContent = DEEP_LINK_TEXT;
+
+      // 2) Optional fallback redirect after 1.5s
+      setTimeout(function () {
+        window.location.href = FALLBACK_URL;
+      }, 1500);
+    }
+
+    window.onload = onLoad;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <p>Redirecting to app…</p>
+    <p class="muted">
+      Deep link: <code id="deeplink-text">eop://?opid=43603</code>
+    </p>
+    <p class="muted">
+      If nothing happens, <a href="https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F">click here</a>.
+    </p>
+  </div>
+</body>
+</html>
+``
