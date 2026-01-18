@@ -23,16 +23,25 @@
   </style>
 
   <script>
-    function swapQR() {
-      setTimeout(function() {
-        document.getElementById("qr").src = "QR-2.jpg";
+    function startCycle() {
+      const img = document.getElementById("qr");
+
+      img.src = "QR-1.jpg";     // show first QR
+
+      setTimeout(function () {
+        img.src = "QR-2.jpg";   // switch after 3 seconds
       }, 3000);
+
+      setTimeout(function () {
+        img.src = "QR-1.jpg";   // return to first QR after 6 seconds total
+      }, 6000);
     }
-    window.onload = swapQR;
+
+    window.onload = startCycle;
   </script>
 </head>
 
 <body>
-  <img id="qr" src="QR-1.jpg" alt="QR">
+  QR-1.jpg
 </body>
 </html>
