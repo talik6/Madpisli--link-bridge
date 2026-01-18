@@ -5,13 +5,12 @@
   <meta charset="UTF-8">
   <title>Opening…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <script>
     function openLinks() {
-      // 1. Try to open the deep link immediately
+      // Try to open app via deep-link
       window.location.href = "eop://?opid=43603";
 
-      // 2. After 3 seconds, redirect to fallback web URL
+      // After 3 seconds → fallback
       setTimeout(function () {
         window.location.href =
           "https://tadpisli-copy-1009fcd8.base44.app/login?from_url=https%3A%2F%2Ftadpisli-copy-1009fcd8.base44.app%2F";
@@ -20,12 +19,11 @@
 
     window.onload = openLinks;
   </script>
-
 </head>
 <body>
-  <p style="text-align:center;margin-top:40px;font-family:sans-serif;">
-    Opening app…<br>
-    <small>If nothing happens, you'll be redirected shortly.</small>
+  <p style="text-align:center; margin-top:40px;">
+    Trying to open: <br><code>eop://?opid=43603</code><br><br>
+    If nothing happens, you’ll be redirected shortly.
   </p>
 </body>
 </html>
